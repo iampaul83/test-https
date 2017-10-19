@@ -2,18 +2,24 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 
-
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
 
 app.post('/post_back_url', (req, res, next) => {    
     console.log(req.originalUrl)
     console.log(JSON.stringify(req.body))
+    console.log(req.headers)
+    console.log(req)
     res.json(req.body)
 })
 
 app.post('/result_url', (req, res, next) => {
     console.log(req.originalUrl)    
     console.log(JSON.stringify(req.body))
+    console.log(req.headers)
+    console.log(req)
     res.sendStatus(200)
 })
 
