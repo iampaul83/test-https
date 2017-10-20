@@ -2,6 +2,22 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 
+app.use(bodyparser.urlencoded({extended: false}))
+// app.use(bodyparser.urlencoded(
+//   { extended: true,
+//     parameterLimit: 200, //Params Maxmin
+//     limit: 100*1024 //default 100k
+//   }))
+
+/* ::JSON:: http://jsonapi.org */
+app.use(bodyparser.json({ type: 'application/vnd.api+json' }))
+// app.use(bodyparser.json(
+// { type: 'application/vnd.api+json',
+//   parameterLimit: 200,  //Params Maxmin,
+//   limit:100*1024 //default 100k
+// }))
+
+
 app.use(bodyParser.text({
     type: '*/*'
 }))
