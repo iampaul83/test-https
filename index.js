@@ -39,6 +39,13 @@ app.post('/result_url', (req, res, next) => {
     res.sendStatus(200)
 })
 
+app.post('/ctbc/post_back_url', (req, res, next) => {
+    console.log(req.originalUrl)
+    console.log(req.body)
+    console.log(req.headers)
+    res.json(req.body)
+})
+
 // heroku will set port via env PORT
 const port = process.env.PORT || 8080
 
